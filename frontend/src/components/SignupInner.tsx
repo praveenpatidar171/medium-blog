@@ -43,7 +43,7 @@ const SignupInner = () => {
 
             const { data } = await axios.post(`${USER_API_END_POINT}/signup`, sendData, config);
             localStorage.setItem('token', data.token);
-            navigate('/blogs');
+            navigate('/');
 
         } catch (error) {
             console.log(error);

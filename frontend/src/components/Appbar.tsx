@@ -5,7 +5,7 @@ const Appbar = () => {
     const navigate = useNavigate();
     return (
         <div className="max-w-7xl mx-auto flex items-center justify-between py-5">
-            <Link to={'/blogs'} >
+            <Link to={'/'} >
                 <div className="text-2xl font-bold text-amber-300">Medium</div>
             </Link>
             <div className="flex items-center">

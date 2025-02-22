@@ -22,7 +22,7 @@ function App() {
       element: <Blog />
     },
     {
-      path: '/blogs',
+      path: '/',
       element: <Blogs />
     },
     {

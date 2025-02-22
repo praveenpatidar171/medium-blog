@@ -32,7 +32,7 @@ const Publish = () => {
 
             await axios.post(`${BLOG_API_END_POINT}`, sendData, config);
             toast.success('Blog Published Successfully!!')
-            navigate('/blogs')
+            navigate('/')
 
         } catch (error) {
             console.log(error);
