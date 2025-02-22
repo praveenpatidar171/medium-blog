@@ -31,7 +31,7 @@ const Blog = () => {
               <h1 className="font-medium">Author</h1>
               <div className="flex items-center gap-3">
                 <div>
-                  <Avatar name="Praveen" />
+                  <Avatar name={blog?.auther?.name || "User"} />
                 </div>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-3xl font-bold">{blog?.auther?.name}</h1>
