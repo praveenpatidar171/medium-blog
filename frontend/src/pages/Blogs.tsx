@@ -1,9 +1,13 @@
+import { useEffect } from "react"
 import Appbar from "../components/Appbar"
 import BlogCard from "../components/BlogCard"
 import BlogSkeleton from "../components/BlogSkeleton"
 import useGetBlogs from "../hooks/useGetBlogs"
+import { useNavigate } from "react-router-dom"
 
 const Blogs = () => {
+
+    const navigate = useNavigate();
 
     interface Blog {
         auther: {
@@ -19,6 +23,13 @@ const Blogs = () => {
     const { blogs, loading } = useGetBlogs();
     console.log(blogs)
     console.log(loading);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/signup')
+        }
+    })
     return (
         <div>
             <div>
