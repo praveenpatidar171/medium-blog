@@ -4,7 +4,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-02-15",
   "vars": {
-    "DATABASE_URL": "Your pooling url",
-    "JWT_SECRET": "your secret"
+    "DATABASE_URL": "Your Prisma pooling connection string",
+    "JWT_SECRET": "your secret key .."
   }
 }

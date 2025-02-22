@@ -54,6 +54,19 @@ blogRouter.get('/:id', async (c) => {
             where: {
                 id: c.req.param('id')
             },
+            select: {
+                id: true,
+                auther: {
+                    select: {
+                        name: true,
+                        email: true,
+                    }
+                },
+                title: true,
+                content: true,
+                autherId: true,
+                published: true
+            }
         })
         c.status(200);
         return c.json({ blog })
@@ -70,7 +83,21 @@ blogRouter.get('/all/bulk', async (c) => {
 
     const prisma = new PrismaClient({ datasourceUrl: c.env.DATABASE_URL }).$extends(withAccelerate());
     try {
-        const blogs = await prisma.post.findMany();
+        const blogs = await prisma.post.findMany({
+            select: {
+                id: true,
+                content: true,
+                title: true,
+                auther: {
+                    select: {
+                        name: true,
+                        email: true
+                    }
+                },
+                published: true
+            }
+
+        });
 
         c.status(200);
         return c.json({ blogs: blogs })
@@ -107,7 +134,7 @@ blogRouter.post('/', async (c) => {
     } catch (error) {
         c.status(411);
         console.log(error);
-        return c.json({ error: 'Error in posting a blog' });
+        return c.json({ message: 'Error in posting a blog' });
     }
 })
 
@@ -123,7 +150,7 @@ blogRouter.put('/', async (c) => {
             return c.json({ message: 'Invalid inputs for updating a blog' })
         }
         const blog = await prisma.post.update({
-            
+
             where: {
                 id: body.id
             },
